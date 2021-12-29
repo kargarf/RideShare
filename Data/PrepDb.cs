@@ -24,11 +24,6 @@ namespace RideShare.Data
                 );
                 context.SaveChanges();
             }
-            else
-            {
-                Console.WriteLine("--> Travel Data Already Exists.");
-            }
-
             if (!context.Users.Any())
             {
                 Console.WriteLine("--> Seeding User Data...");
@@ -36,6 +31,16 @@ namespace RideShare.Data
                     new User() {Name = "Ferruh", Surname="TR"},
                     new User() {Name = "Ferhat", Surname="TR"},
                     new User() {Name = "Ferman", Surname="TR"}
+                );
+                context.SaveChanges();
+            }
+            if (!context.Trips.Any())
+            {
+                Console.WriteLine("--> Seeding Trips Data...");
+                context.Trips.AddRange(
+                    new Trip() {UserId = 1, TravelId = 1},
+                    new Trip() {UserId = 2, TravelId = 2},
+                    new Trip() {UserId = 3, TravelId = 3}
                 );
                 context.SaveChanges();
             }
